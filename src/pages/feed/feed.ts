@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MovieProvider } from '../../providers/movie/movie';
 
 /**
  * Generated class for the FeedPage page.
@@ -11,8 +12,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-feed',
-  templateUrl: 'feed.html'
+  templateUrl: 'feed.html',
+  providers:[
+    MovieProvider
+  ] 
 })
+
 export class FeedPage {
   
   public objeto_feed = {
@@ -24,12 +29,21 @@ export class FeedPage {
     time_comment:"11h ago teste"
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private movieProvider: MovieProvider
+    ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
-    
+    this.movieProvider.getLatestMovie().subscribe(
+      data=>{
+        console.log(data);
+      }, error=>{
+        console.log(error);
+      }
+    )
   }
 
 }
