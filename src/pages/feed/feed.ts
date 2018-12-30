@@ -15,21 +15,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeedPage {
   
-  public nomeUsuario:string = "Edson do Amaral do Código";
+  public objeto_feed = {
+    titulo:"Edson do Amaral Januario",
+    data:"January 26, 1992",
+    comentario:"Show este meu primeiro App.",
+    qntd_like:12,
+    qntd_comments:4,
+    time_comment:"11h ago teste"
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  /**
-   * somaDoisNumeros
- :void  */
-  public somaDoisNumeros(num1:number, num2:number):void {
-    alert(num1+num2);
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedPage');
-    //this.somaDoisNumeros(10,99);
+    
   }
 
 }
