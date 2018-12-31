@@ -17,7 +17,7 @@ export class MovieProvider {
   }
 
   getLatestMovie(){
-    return this.http.get(this.BaseApiPath +"/movie/latest?api_key=5c57a89f22563b9da61039cfebae726d");
+    return this.http.get(this.BaseApiPath +"/movie/popular?api_key=5c57a89f22563b9da61039cfebae726d");
   }
 
 }

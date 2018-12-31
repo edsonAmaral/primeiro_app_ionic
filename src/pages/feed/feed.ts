@@ -26,7 +26,7 @@ export class FeedPage {
     comentario:"Show este meu primeiro App.",
     qntd_like:12,
     qntd_comments:4,
-    time_comment:"11h ago teste"
+    time_comment:"11h ago"
   }
 
   constructor(
@@ -36,10 +36,15 @@ export class FeedPage {
     ) {
   }
 
+  public lista_filmes = new Array<any>();
+
   ionViewDidLoad() {
     this.movieProvider.getLatestMovie().subscribe(
       data=>{
-        console.log(data);
+        const response = (data as any);
+        const objeto_retorno = JSON.parse(response._body);
+        this.lista_filmes = objeto_retorno.results;
+        console.log(objeto_retorno);
       }, error=>{
         console.log(error);
       }
