@@ -16,8 +16,11 @@ export class MovieProvider {
     console.log('Hello MovieProvider Provider');
   }
 
-  getLatestMovie(){
-    return this.http.get(this.BaseApiPath +"/movie/popular?api_key=5c57a89f22563b9da61039cfebae726d");
+  getLatestMovie(page?: number){
+    return this.http.get(this.BaseApiPath +`/movie/popular?page=${page}&api_key=5c57a89f22563b9da61039cfebae726d&language=pt-BR`);
   }
 
+  getMovieDetail(filmeId){
+    return this.http.get(this.BaseApiPath + `/movie/${filmeId}?api_key=5c57a89f22563b9da61039cfebae726d&language=pt-BR`);
+  }
 }
